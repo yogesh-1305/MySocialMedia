@@ -66,11 +66,8 @@ public class SignUpActivity extends AppCompatActivity implements View.OnKeyListe
         goToLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivity(intent);
+                startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                finish();
             }
         });
         retypePassword.setOnKeyListener(this);
@@ -112,8 +109,7 @@ public class SignUpActivity extends AppCompatActivity implements View.OnKeyListe
         //username.setText("");
         password.setText("");
         retypePassword.setText("");
-        Intent intent = new Intent(getApplicationContext(), AllUserActivity.class);
-        startActivity(intent);
+        startActivity(new Intent(getApplicationContext(), AllUserActivity.class));
         finish();
     }
 

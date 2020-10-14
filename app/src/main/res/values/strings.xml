@@ -1,4 +1,7 @@
 <resources>
-    <string name="app_name">Sasta Instagram</string>
+    <string name="app_name">MSMedia</string>
     <string name="first_time_here">First Time Here?</string>
+    <string name="facebook_app_id">657723408463743</string>
+    <string name="fb_login_protocol_scheme">fb657723408463743</string>
+
 </resources>

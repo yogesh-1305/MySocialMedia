@@ -67,6 +67,42 @@
         app:layout_constraintStart_toEndOf="@+id/view"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/FacebookLogin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:background="@drawable/button_layout_facebook"
+        android:textColor="@color/cardview_light_background"
+        android:drawableStart="@drawable/icons8_facebook"
+        android:text="Continue with Facebook"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ORText" />
+
+    <Button
+        android:id="@+id/GoogleSignIn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:onClick="signIn"
+        android:background="@drawable/button_layout_google"
+        android:text="Continue with Google"
+        android:drawableStart="@drawable/icons8_google"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FacebookLogin" />
+
     <EditText
         android:id="@+id/passwordText"
         android:layout_width="0dp"
@@ -102,22 +138,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/splash" />
 
-    <ImageView
-        android:id="@+id/fbLogoImage"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="48dp"
-        android:background="#070707"
-        android:backgroundTintMode="multiply"
-        app:layout_constraintBottom_toTopOf="@+id/view"
-        app:layout_constraintEnd_toStartOf="@+id/loginwithfb"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ORText"
-        app:layout_constraintVertical_bias="0.096"
-        app:srcCompat="@drawable/logofinal" />
-
     <TextView
         android:id="@+id/forgotPasswordTextView"
         android:layout_width="0dp"
@@ -146,23 +166,6 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/ORLeft"
         app:layout_constraintTop_toBottomOf="@+id/forgotPasswordTextView" />
-
-    <TextView
-        android:id="@+id/loginwithfb"
-        android:layout_width="140dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="92dp"
-        android:fontFamily="@font/aref_ruqaa"
-        android:text="Log In with Facebook"
-        android:textAlignment="center"
-        android:textColor="#0F41DA"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ORText"
-        app:layout_constraintVertical_bias="0.0" />
 
     <ToggleButton
         android:id="@+id/passwordToggleButton"
