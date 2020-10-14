@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "557343211217",
+    "firebase_url": "https://ms-media-475fe.firebaseio.com",
+    "project_id": "ms-media-475fe",
+    "storage_bucket": "ms-media-475fe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:557343211217:android:786104523f05fc54110ff0",
+        "android_client_info": {
+          "package_name": "com.MSMedia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "557343211217-bo5qgfmm727fhdgse3vu5o3mp5sdojik.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.MSMedia",
+            "certificate_hash": "e39a4c0fa79b0f7d665ec2ec92d192ea8d240e46"
+          }
+        },
+        {
+          "client_id": "557343211217-n59eopr2fkkdf4fqed8l76e6lpqahda1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7E-osU7iyAfAXdryiNzl-A0pv_BwpXac"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "557343211217-n59eopr2fkkdf4fqed8l76e6lpqahda1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

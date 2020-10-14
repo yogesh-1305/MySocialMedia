@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/signUpLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#050505"
+    android:backgroundTintMode="add"
+    tools:context=".MainActivity">
+
+    <AutoCompleteTextView
+        android:id="@+id/usernameText"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:autofillHints="AUTOFILL_HINT_EMAIL_ADDRESS"
+        android:background="@drawable/edit_text_layout"
+        android:cursorVisible="true"
+        android:fontFamily="@font/farsan"
+        android:hint="Phone number, username or email"
+        android:imeOptions="actionNext"
+        android:paddingStart="30dp"
+        android:popupBackground="@android:color/background_dark"
+        android:shadowColor="#201F1F"
+        android:singleLine="true"
+        android:textColor="#EAE5E5"
+        android:textColorHint="#9F9C9C"
+        android:textCursorDrawable="@android:drawable/dark_header"
+        android:textSize="14sp"
+        android:typeface="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logoImageView" />
+
+    <Button
+        android:id="@+id/sugnUpButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/button_layout"
+        android:backgroundTint="#263238"
+        android:backgroundTintMode="screen"
+        android:onClick="logIn"
+        android:text="Log in"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordText" />
+
+    <Button
+        android:id="@+id/goToSignupButton"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#00FFFFFF"
+        android:fontFamily="@font/allan"
+        android:text="Don't have an account?  Sign up"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/view"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/passwordText"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:autofillHints="AUTOFILL_HINT_PASSWORD"
+        android:background="@drawable/edit_text_layout"
+        android:cursorVisible="true"
+        android:ems="10"
+        android:fontFamily="serif-monospace"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:paddingStart="30dp"
+        android:shadowColor="#252424"
+        android:textColor="#EFE7E7"
+        android:textColorHint="#9F9C9C"
+        android:textCursorDrawable="@android:drawable/dark_header"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/usernameText" />
+
+    <ImageView
+        android:id="@+id/logoImageView"
+        android:layout_width="233dp"
+        android:layout_height="242dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/splash" />
+
+    <ImageView
+        android:id="@+id/fbLogoImage"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="48dp"
+        android:background="#070707"
+        android:backgroundTintMode="multiply"
+        app:layout_constraintBottom_toTopOf="@+id/view"
+        app:layout_constraintEnd_toStartOf="@+id/loginwithfb"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ORText"
+        app:layout_constraintVertical_bias="0.096"
+        app:srcCompat="@drawable/logofinal" />
+
+    <TextView
+        android:id="@+id/forgotPasswordTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="100dp"
+        android:fontFamily="@font/aubrey"
+        android:text="Forgot Login Details?"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sugnUpButton" />
+
+    <TextView
+        android:id="@+id/ORText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="OR"
+        android:textColor="#676565"
+        app:layout_constraintEnd_toStartOf="@+id/ORRight"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ORLeft"
+        app:layout_constraintTop_toBottomOf="@+id/forgotPasswordTextView" />
+
+    <TextView
+        android:id="@+id/loginwithfb"
+        android:layout_width="140dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="92dp"
+        android:fontFamily="@font/aref_ruqaa"
+        android:text="Log In with Facebook"
+        android:textAlignment="center"
+        android:textColor="#0F41DA"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ORText"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ToggleButton
+        android:id="@+id/passwordToggleButton"
+        android:layout_width="60dp"
+        android:layout_height="0dp"
+        android:background="#004C4B4B"
+        android:text="ToggleButton"
+        android:textAlignment="center"
+        android:textColor="#FAF9F9"
+        android:textOff="Show"
+        android:textOn="Hide"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/passwordText"
+        app:layout_constraintEnd_toEndOf="@+id/passwordText"
+        app:layout_constraintTop_toTopOf="@+id/passwordText" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="45dp"
+        android:background="#555454"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:id="@+id/ORLeft"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="20dp"
+        android:background="#615F5F"
+        app:layout_constraintEnd_toStartOf="@+id/ORText"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/forgotPasswordTextView" />
+
+    <View
+        android:id="@+id/ORRight"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="20dp"
+        android:background="#615F5F"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ORText"
+        app:layout_constraintTop_toBottomOf="@+id/forgotPasswordTextView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
