@@ -3,5 +3,8 @@
     <string name="first_time_here">First Time Here?</string>
     <string name="facebook_app_id">657723408463743</string>
     <string name="fb_login_protocol_scheme">fb657723408463743</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="web_client_id" translatable="false">557343211217-n59eopr2fkkdf4fqed8l76e6lpqahda1.apps.googleusercontent.com</string>
 
 </resources>

@@ -60,12 +60,12 @@ public class UserListActivity extends AppCompatActivity {
                 startActivity(intent);
                 Toast.makeText(this, "Logged Out from: " + ParseUser.getCurrentUser().getUsername(), Toast.LENGTH_SHORT).show();
                 return true;
-            case R.id.share:
-                if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-                    requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},1);
-                }else {
-                    getPhoto();
-                }
+//            case R.id.share:
+//                if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+//                    requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},1);
+//                }else {
+//                    getPhoto();
+//                }
             default:
                 return false;
         }

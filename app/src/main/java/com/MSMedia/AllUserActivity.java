@@ -1,18 +1,28 @@
 package com.MSMedia;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.material.bottomnavigation.BottomNavigationMenu;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.parse.FindCallback;
 import com.parse.GetDataCallback;
 import com.parse.ParseException;
@@ -26,13 +36,64 @@ import java.util.Objects;
 
 public class AllUserActivity extends AppCompatActivity {
     SwipeRefreshLayout swipeRefreshLayout;
-    LoadingDialog loadingDialog;
-    AllFeedsAdapter adapter;
-    ListView listView;
     List<String> username;
     List<Bitmap> photos;
-    Bitmap bitmap;
-    int size = 0;
+    FirebaseAuth mAuth;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_all_user);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("User Feeds");
+        mAuth = FirebaseAuth.getInstance();
+        swipeRefreshLayout = findViewById(R.id.refreshLayout);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        username = new ArrayList<>();
+        photos = new ArrayList<>();
+//        loadingDialog = new LoadingDialog(AllUserActivity.this);
+//        loadingDialog.startDialog();
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
+//        FragmentManager manager = getSupportFragmentManager();
+//        FragmentTransaction transaction = manager.beginTransaction();
+//        HomeFragment homeFragment = new HomeFragment();
+//        transaction.add(R.id.fragment, homeFragment);
+//        transaction.commit();
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @SuppressLint("NonConstantResourceId")
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case R.id.navHome:
+                        Toast.makeText(AllUserActivity.this, "Home clicked", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.navSearch:
+                        Toast.makeText(AllUserActivity.this, "Search", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.navAdd:
+                        Toast.makeText(AllUserActivity.this, "add", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.navActivity:
+                        Toast.makeText(AllUserActivity.this, "activity", Toast.LENGTH_SHORT).show();
+                        break;
+                    case R.id.navProfile:
+                        Toast.makeText(AllUserActivity.this, "profile", Toast.LENGTH_SHORT).show();
+                        break;
+                    default:
+                        Toast.makeText(AllUserActivity.this, "default", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+                return true;
+            }
+        });
+    }
+
 
 
     // BOOLEAN AND BELOW METHOD HANDLES EXITING THE APP ON BACK BUTTON PRESS
@@ -64,70 +125,20 @@ public class AllUserActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void getQuery(){
-        username.clear();
-        photos.clear();
-        final ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Image");
-        //query.orderByAscending("createdAt");
-        query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(final List<ParseObject> objects, ParseException e) {
-                if (e == null && objects.size() > 0){
-                    for (final ParseObject images : objects){
-                        //username.add(Objects.requireNonNull(images.get("username")).toString());
-                        Log.i("username", (String) Objects.requireNonNull(images.get("username")));
-                        ParseFile file = (ParseFile) images.get("image");
-                        query.orderByDescending("createdAt");
-                        if (file != null) {
-                            file.getDataInBackground(new GetDataCallback() {
-                                @Override
-                                public void done(byte[] data, ParseException e) {
-                                    if (e == null && data != null) {
-                                        username.add(Objects.requireNonNull(images.get("username")).toString());
-                                        bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
-                                        photos.add(bitmap);
-//                                    size++;
-                                        Log.i("photo", "added");
-                                        adapter = new AllFeedsAdapter(getApplicationContext(), username, photos);
-                                        listView.setAdapter(adapter);
-                                        Log.i("adapter", "added");
-                                        loadingDialog.dismissDialog();
-                                    }
-                                }
-                            });
-                        }else {
-                            loadingDialog.dismissDialog();
-                        }
-                    }
-                }else {
-                    loadingDialog.dismissDialog();
-                    Toast.makeText(AllUserActivity.this, "NO MEDIA FOUND!", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.user_menu, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_all_user);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("User Feeds");
-        listView = findViewById(R.id.allFeedsListView);
-        swipeRefreshLayout = findViewById(R.id.refreshLayout);
-        username = new ArrayList<>();
-        photos = new ArrayList<>();
-        loadingDialog = new LoadingDialog(AllUserActivity.this);
-        loadingDialog.startDialog();
-        getQuery();
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-//                finish();
-//                startActivity(getIntent());
-                getQuery();
-                swipeRefreshLayout.setRefreshing(false);
-            }
-        });
-
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.logOut:
+                mAuth.signOut();
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

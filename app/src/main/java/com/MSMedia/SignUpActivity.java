@@ -3,10 +3,12 @@ package com.MSMedia;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -16,14 +18,16 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Objects;
 
-public class SignUpActivity extends AppCompatActivity implements View.OnKeyListener {
+public class SignUpActivity extends AppCompatActivity implements View.OnKeyListener, View.OnClickListener {
 
     FirebaseAuth mAuth;
     EditText email;
@@ -34,6 +38,8 @@ public class SignUpActivity extends AppCompatActivity implements View.OnKeyListe
     Button goToLogin;
     ToggleButton passwordToggleButton;
     boolean passwordVisible = true;
+    Auth auth = new Auth(SignUpActivity.this);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +55,37 @@ public class SignUpActivity extends AppCompatActivity implements View.OnKeyListe
         retypePassword = findViewById(R.id.signUpRepeatPassword);
         signUpButton = findViewById(R.id.signUpButton);
         passwordToggleButton = findViewById(R.id.signUpPasswordToggleButton);
-        passwordToggleButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        goToLogin = findViewById(R.id.goToLoginButton);
+
+        passwordToggleButton.setOnClickListener(this);
+        goToLogin.setOnClickListener(this);
+        retypePassword.setOnKeyListener(this);
+    }
+
+
+    public void signUp(View view){
+        String userName = username.getText().toString();
+        String mail = email.getText().toString();
+        String pass = password.getText().toString();
+        String retypedPassword = retypePassword.getText().toString();
+        auth.signUp(mail,userName,pass,retypedPassword);
+
+    }
+
+
+    public void showAllFeeds(){
+        //username.setText("");
+        password.setText("");
+        retypePassword.setText("");
+        startActivity(new Intent(this, AllUserActivity.class));
+        finish();
+    }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.signUpPasswordToggleButton:
                 if (passwordVisible){
                     password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                     passwordVisible = false;
@@ -59,18 +93,12 @@ public class SignUpActivity extends AppCompatActivity implements View.OnKeyListe
                     password.setTransformationMethod(PasswordTransformationMethod.getInstance());
                     passwordVisible = true;
                 }
-            }
-        });
-
-        goToLogin = findViewById(R.id.goToLoginButton);
-        goToLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+            case R.id.goToLoginButton:
                 startActivity(new Intent(getApplicationContext(),MainActivity.class));
                 finish();
-            }
-        });
-        retypePassword.setOnKeyListener(this);
+            default:
+                Toast.makeText(this, "default case", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -82,35 +110,4 @@ public class SignUpActivity extends AppCompatActivity implements View.OnKeyListe
         }
         return false;
     }
-
-    public void signUp(View view){
-        final String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-        if (email.getText().toString().equals("") && username.getText().toString().equals("")) {
-            Toast.makeText(this, "All above fields are required.", Toast.LENGTH_SHORT).show();
-        }else if (!email.getText().toString().matches(emailPattern)){
-            Toast.makeText(this, "Please enter a valid Email", Toast.LENGTH_SHORT).show();
-        }else if (!password.getText().toString().equals(retypePassword.getText().toString())) {
-            Toast.makeText(this, "Password Mis-Match", Toast.LENGTH_SHORT).show();
-        }else{
-            mAuth.createUserWithEmailAndPassword(email.getText().toString(), password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if (task.isSuccessful()){
-                        FirebaseUser firebaseUser = mAuth.getCurrentUser();
-                        assert firebaseUser != null;
-                        Toast.makeText(SignUpActivity.this, "Signed Up as: " + firebaseUser.getEmail(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-        }
-    }
-
-    public void showAllFeeds(){
-        //username.setText("");
-        password.setText("");
-        retypePassword.setText("");
-        startActivity(new Intent(getApplicationContext(), AllUserActivity.class));
-        finish();
-    }
-
 }

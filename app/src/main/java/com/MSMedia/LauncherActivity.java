@@ -16,16 +16,15 @@ import com.parse.ParseUser;
 import java.util.Objects;
 
 public class LauncherActivity extends AppCompatActivity {
+    protected FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
-    private FirebaseAuth mAuth;
-
+    // CHECK IF USER IS ALREADY LOGGED IN
     @Override
     protected void onStart() {
         super.onStart();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null){
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null){
             showAllFeeds();
-            Toast.makeText(this, user.getEmail(), Toast.LENGTH_SHORT).show();
         }
     }
 
