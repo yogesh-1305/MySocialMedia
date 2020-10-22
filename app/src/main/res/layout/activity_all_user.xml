@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/refreshLayout"
@@ -20,16 +20,17 @@
             android:id="@+id/bottomNavigationView"
             android:layout_width="0dp"
             android:layout_height="60dp"
-            app:itemTextColor="#232323"
-            android:background="@color/browser_actions_bg_grey"
+            app:labelVisibilityMode="unlabeled"
+            app:itemIconSize="30dp"
+            app:itemIconTint="@color/browser_actions_bg_grey"
+            android:background="@color/colorAccent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:menu="@menu/bottom_nav_menu" />
 
-        <fragment
+        <FrameLayout
             android:id="@+id/fragment"
-            android:name="com.MSMedia.HomeFragment"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
@@ -39,4 +40,4 @@
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

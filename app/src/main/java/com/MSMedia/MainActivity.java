@@ -35,6 +35,7 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FacebookAuthProvider;
@@ -48,18 +49,16 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, View.OnKeyListener {
 
-    Button logInButton;
+    FloatingActionButton logInButton;
     Button goToSignupButton;
-    Button fbLoginButton;
+    FloatingActionButton fbLoginButton;
+    FloatingActionButton googleSignInButton;
     boolean passwordVisible = true;
     ToggleButton passwordToggleButton;
     ConstraintLayout constraintLayout;
     EditText username;
     EditText password;
     TextView forgetPassword;
-    View orLeft;
-    View orRight;
-    TextView OR;
     ImageView logoImage;
     GoogleSignInOptions gso;
     GoogleSignInClient googleSignInClient;
@@ -72,23 +71,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Objects.requireNonNull(getSupportActionBar()).hide();
 
         mAuth = FirebaseAuth.getInstance();
         auth = new Auth(MainActivity.this);
 
         constraintLayout = findViewById(R.id.signUpLayout);
-        forgetPassword = findViewById(R.id.forgotPasswordTextView);
         passwordToggleButton = findViewById(R.id.passwordToggleButton);
         logoImage = findViewById(R.id.logoImageView);
         username = findViewById(R.id.usernameText);
         password = findViewById(R.id.passwordText);
-        logInButton = findViewById(R.id.sugnUpButton);
-        orLeft = findViewById(R.id.ORLeft);
-        OR = findViewById(R.id.ORText);
-        orRight = findViewById(R.id.ORRight);
         goToSignupButton = findViewById(R.id.goToSignupButton);
+        logInButton = findViewById(R.id.loginButton);
         fbLoginButton = findViewById(R.id.FacebookLogin);
+        googleSignInButton = findViewById(R.id.googleSignInButton);
 
         // auto fill for below views
         username.setAutofillHints(View.AUTOFILL_HINT_EMAIL_ADDRESS);
@@ -100,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         fbLoginButton.setOnClickListener(this);
         goToSignupButton.setOnClickListener(this);
         password.setOnKeyListener(this);
-        forgetPassword.setOnClickListener(this);
+//        forgetPassword.setOnClickListener(this);
 
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -124,7 +119,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String pass = password.getText().toString();
         auth.logIn(email, pass);
     }
-
 
 //    private void animations() {
 //        logoImage.setY(-600);
@@ -151,9 +145,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.forgotPasswordTextView){
-            Log.i("forget","password");
-        }else if (view.getId() == R.id.passwordToggleButton){
+        if (view.getId() == R.id.passwordToggleButton){
             if (passwordVisible){
                 password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                 passwordVisible = false;

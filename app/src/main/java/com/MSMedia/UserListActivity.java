@@ -138,11 +138,8 @@ public class UserListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_list);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-
 
         userList = findViewById(R.id.userList);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Users List");
         final LoadingDialog loadingDialog = new LoadingDialog(this);
         loadingDialog.startDialog();
         userNames = new ArrayList<>();

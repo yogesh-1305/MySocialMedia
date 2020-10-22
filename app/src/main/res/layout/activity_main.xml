@@ -5,7 +5,7 @@
     android:id="@+id/signUpLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#050505"
+    android:background="@drawable/back2"
     android:backgroundTintMode="add"
     tools:context=".MainActivity">
 
@@ -13,44 +13,28 @@
         android:id="@+id/usernameText"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
         android:autofillHints="AUTOFILL_HINT_EMAIL_ADDRESS"
         android:background="@drawable/edit_text_layout"
         android:cursorVisible="true"
-        android:fontFamily="@font/farsan"
+        android:fontFamily="sans-serif-condensed-medium"
         android:hint="Phone number, username or email"
         android:imeOptions="actionNext"
         android:paddingStart="30dp"
         android:popupBackground="@android:color/background_dark"
         android:shadowColor="#201F1F"
         android:singleLine="true"
-        android:textColor="#EAE5E5"
-        android:textColorHint="#9F9C9C"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#D5D1D1"
         android:textCursorDrawable="@android:drawable/dark_header"
         android:textSize="14sp"
         android:typeface="normal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoImageView" />
-
-    <Button
-        android:id="@+id/sugnUpButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/button_layout"
-        android:backgroundTint="#263238"
-        android:backgroundTintMode="screen"
-        android:onClick="logIn"
-        android:text="Log in"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordText" />
+        app:layout_constraintTop_toBottomOf="@+id/logoImageView" />
 
     <Button
         android:id="@+id/goToSignupButton"
@@ -64,67 +48,30 @@
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/view"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/FacebookLogin"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:background="@drawable/button_layout_facebook"
-        android:textColor="@color/cardview_light_background"
-        android:drawableStart="@drawable/icons8_facebook"
-        android:text="Continue with Facebook"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ORText" />
-
-    <Button
-        android:id="@+id/GoogleSignIn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:onClick="signIn"
-        android:background="@drawable/button_layout_google"
-        android:text="Continue with Google"
-        android:drawableStart="@drawable/icons8_google"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/FacebookLogin" />
 
     <EditText
         android:id="@+id/passwordText"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:autofillHints="AUTOFILL_HINT_PASSWORD"
         android:background="@drawable/edit_text_layout"
         android:cursorVisible="true"
         android:ems="10"
-        android:fontFamily="serif-monospace"
+        android:fontFamily="sans-serif-condensed-medium"
         android:hint="Password"
         android:inputType="textPassword"
         android:paddingStart="30dp"
         android:shadowColor="#252424"
-        android:textColor="#EFE7E7"
-        android:textColorHint="#9F9C9C"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#E6E4E4"
+        android:textColorHint="#DDDCDC"
         android:textCursorDrawable="@android:drawable/dark_header"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/usernameText" />
 
@@ -132,40 +79,12 @@
         android:id="@+id/logoImageView"
         android:layout_width="233dp"
         android:layout_height="242dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/splash" />
-
-    <TextView
-        android:id="@+id/forgotPasswordTextView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="100dp"
-        android:fontFamily="@font/aubrey"
-        android:text="Forgot Login Details?"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sugnUpButton" />
-
-    <TextView
-        android:id="@+id/ORText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="OR"
-        android:textColor="#676565"
-        app:layout_constraintEnd_toStartOf="@+id/ORRight"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/ORLeft"
-        app:layout_constraintTop_toBottomOf="@+id/forgotPasswordTextView" />
 
     <ToggleButton
         android:id="@+id/passwordToggleButton"
@@ -183,43 +102,45 @@
         app:layout_constraintEnd_toEndOf="@+id/passwordText"
         app:layout_constraintTop_toTopOf="@+id/passwordText" />
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginBottom="45dp"
-        android:background="#555454"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <View
-        android:id="@+id/ORLeft"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="20dp"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/loginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="20dp"
-        android:background="#615F5F"
-        app:layout_constraintEnd_toStartOf="@+id/ORText"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="#EF0619"
+        android:clickable="true"
+        android:onClick="logIn"
+        app:fabSize="auto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordText"
+        app:maxImageSize="30dp"
+        app:srcCompat="@drawable/ic_baseline_login_24" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/FacebookLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#2A448A"
+        android:clickable="true"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/forgotPasswordTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordText"
+        app:maxImageSize="40dp"
+        app:srcCompat="@drawable/icons8_facebook" />
 
-    <View
-        android:id="@+id/ORRight"
-        android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginStart="20dp"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/googleSignInButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="20dp"
-        android:background="#615F5F"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/ORText"
-        app:layout_constraintTop_toBottomOf="@+id/forgotPasswordTextView" />
+        android:clickable="true"
+        android:onClick="signIn"
+        app:layout_constraintStart_toEndOf="@+id/FacebookLogin"
+        app:layout_constraintTop_toBottomOf="@+id/passwordText"
+        app:maxImageSize="40dp"
+        app:srcCompat="@drawable/icons8_google" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

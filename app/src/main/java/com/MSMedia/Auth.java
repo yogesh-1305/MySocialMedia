@@ -207,6 +207,6 @@ public class Auth extends AppCompatActivity {
     }
 
     public void updateUI(){
-        startActivity(new Intent(context,AllUserActivity.class));
+        Auth.this.context.startActivity(new Intent(context,AllUserActivity.class));
     }
 }

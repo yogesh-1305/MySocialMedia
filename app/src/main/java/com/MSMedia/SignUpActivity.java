@@ -45,7 +45,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnKeyListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Sign up");
 
         mAuth = FirebaseAuth.getInstance();
 

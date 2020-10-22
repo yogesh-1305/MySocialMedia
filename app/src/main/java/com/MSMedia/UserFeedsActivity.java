@@ -35,9 +35,6 @@ public class UserFeedsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         username = intent.getStringExtra("username");
 
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        Objects.requireNonNull(getSupportActionBar()).setTitle(username);
-
         listView = findViewById(R.id.feedsListView);
         photos = new ArrayList<>();
         final LoadingDialog loadingDialog = new LoadingDialog(this);

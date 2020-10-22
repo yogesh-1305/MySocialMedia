@@ -32,7 +32,6 @@ public class LauncherActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launcher);
-        Objects.requireNonNull(getSupportActionBar()).hide();
         Button signUp = findViewById(R.id.signUpLauncherActivity);
         Button logIn = findViewById(R.id.logInLauncherActivity);
 
